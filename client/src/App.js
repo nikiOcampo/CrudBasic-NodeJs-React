@@ -55,7 +55,14 @@ function App() {
         icon: 'success',
         timer:5000
       });
-    });
+    }).catch(function(error){
+      Swal.fire({
+        title: "Oops!",
+        text: nombre + " no pudo ser registrado. :)",
+        icon: "error",
+        footer: JSON.parse(JSON.stringify(error)).message
+      });
+    });;
   }
 
   const update = ()=>{
@@ -77,7 +84,59 @@ function App() {
         icon: 'success',
         timer:5000
       });
-    });
+    }).catch(function(error){
+      Swal.fire({
+        title: "Oops!",
+        text: nombre + " no pudo ser actualizado. :)",
+        icon: "error",
+        footer: JSON.parse(JSON.stringify(error)).message
+      });
+    });;
+  }
+
+  const deleteEmple = (val)=>{
+
+      Swal.fire({
+        title: "Are you sure?",
+        html: "<i>Desea eliminar al empleado <strong> " + val.nombre + " </strong>?</i>",
+        icon: "warning",
+        showCancelButton: true,
+        cancelButtonColor:'#d33',
+        confirmButtonColor:'#3085d6',
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Axios.delete(`http://localhost:3001/delete/${val.id}`).then(()=>{
+            getEmpleados();
+            fetchDataFromApi();
+            limpiarCampos();
+            Swal.fire({
+              title: "Elimado!",
+              text: val.nombre + " fue eliminado.",
+              icon: "success",
+              timer: 5000
+            });
+          }).catch(function(error){
+            Swal.fire({
+              title: "Oops!",
+              text: val.nombre + " no pudo ser eliminado. :)",
+              icon: "error",
+              footer: JSON.parse(JSON.stringify(error)).message
+            });
+          });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          Swal.fire({
+            title: "Cancelado!",
+            text: val.nombre + " no fue eliminado. :)",
+            icon: "error"
+          });
+        }
+      });
   }
 
   const editarEmpleado = (val)=>{
@@ -228,7 +287,11 @@ function App() {
                     }}
                     className="btn btn-warning">Editar</button>
 
-                    <button type="button" className="btn btn-danger">Eliminar</button>
+                    <button type="button" 
+                    onClick={()=>{
+                      deleteEmple(val);
+                    }}
+                    className="btn btn-danger">Eliminar</button>
                 </div>
                 </td>
               </tr>

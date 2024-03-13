@@ -27,7 +27,7 @@ app.post("/create", (req,res)=>{
         if(err){
             console.log(err);
         }else{
-            res.send("Empleado Registrado con exito!");
+            res.send(result);
         }
     });
 });
@@ -57,7 +57,20 @@ app.put("/update", (req,res)=>{
         if(err){
             console.log(err);
         }else{
-            res.send("Empleado Actuliazado con exito!");
+            res.send(result);
+        }
+    });
+});
+
+app.delete("/delete/:id", (req,res)=>{
+    const id = req.params.id;
+
+    db.query('DELETE FROM empleados WHERE id=?', id, 
+    (err, result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
         }
     });
 });
