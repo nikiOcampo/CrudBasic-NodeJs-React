@@ -5,9 +5,6 @@ import Axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Swal from 'sweetalert2'
-//import withReactContent from 'sweetalert2-react-content'
-
-//const noti = withReactContent(Swal)
 
 function fetchDataFromApi() {
     Axios.get('http://localhost:3001/empleados', { timeout: 500000 }) // Adjust the timeout value as needed
@@ -127,7 +124,6 @@ function App() {
             });
           });
         } else if (
-          /* Read more about handling dismissals below */
           result.dismiss === Swal.DismissReason.cancel
         ) {
           Swal.fire({
@@ -160,13 +156,6 @@ function App() {
     setEditar(false);
   }
   
-
-  //const getEmpleados = ()=>{
-  //  Axios.get("http://localhost:3001/empleados").then((response)=>{
-  //    setEmpleados(response.data);
-  //  });
- // }
-
   const getEmpleados = () => {
     Axios.get("http://localhost:3001/empleados")
       .then((response) => {
@@ -194,6 +183,9 @@ function App() {
 
   return (
     <div className="container">
+      <div>
+        <h2 className="border">Bienvenido al sistema de Gestion de Empleados</h2>
+      </div>
       <div className="card text-center">
         <div className="card-header">
           GESTION DE EMPLEADOS
@@ -253,10 +245,12 @@ function App() {
             </div>
             : <button className='btn btn-success' onClick={add}>Registrar</button>
           }
-        
         </div>
       </div>
 
+      <div>
+        <h3 className="border">Lista de empleados registrados:</h3>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
