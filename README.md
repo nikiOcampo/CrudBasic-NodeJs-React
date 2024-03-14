@@ -4,12 +4,12 @@ Este proyecto es un ejemplo de una aplicación CRUD (Crear, Leer, Actualizar, El
 La aplicación permite realizar operaciones básicas de gestión de datos sobre una entidad específica, en este caso una gestion de empleados.
 
 ## Contenido
-1. Requisitos
-2. Instalación
-3. Estructura del Proyecto
-4. Configuración
-5. Ejecución
-6. Uso
+1. [Requisitos](#Requisitos)
+2. [Instalación](#Instalación)
+3. [Estructura del Proyecto](#Estructura-del-Proyecto)
+4. [Configuración](#Configuración)
+5. [Ejecución](#Ejecución)
+6. [Uso](#Uso)
 
 
 ## Requisitos
