@@ -30,7 +30,7 @@ git clone https://github.com/tu-usuario/nombre-del-repo.git
 
 ## Estructura del Proyecto
 El proyecto está estructurado de la siguiente manera:
-
+```
 CrudBasic-NodeJss-React/
 │
 ├── server/                       # Backend desarrollado con Node.js
@@ -47,6 +47,7 @@ CrudBasic-NodeJss-React/
     │   ├── reportWebVitals.js/  
     │   └── App.js                # Componente principal de la aplicación
     └── package.json
+```
 
 ## Configuración
 1. Crea una base de datos MySQL.
